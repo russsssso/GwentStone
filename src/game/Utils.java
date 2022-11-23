@@ -7,14 +7,14 @@ public final class Utils {
     private final ArrayList<String> minions;
     private final ArrayList<String> minionsWithAbility;
     private final ArrayList<String> heroes;
-    private final ArrayList<String> enviorment;
+    private final ArrayList<String> environment;
 
     private final int heroHp = 30;
     private final int maxMana = 10;
 
 
     public Utils() {
-        enviorment = new ArrayList<>();
+        environment = new ArrayList<>();
         minionsWithAbility = new ArrayList<>();
         heroes = new ArrayList<>();
         minions = new ArrayList<>();
@@ -33,9 +33,9 @@ public final class Utils {
         minionsWithAbility.add("Disciple");
         minionsWithAbility.add("The Cursed One");
 
-        enviorment.add("Firestorm");
-        enviorment.add("Winterfell");
-        enviorment.add("Heart Hound");
+        environment.add("Firestorm");
+        environment.add("Winterfell");
+        environment.add("Heart Hound");
 
         heroes.add("Lord Royce");
         heroes.add("Empress Thorina");
@@ -74,7 +74,7 @@ public final class Utils {
         return maxMana;
     }
 
-    public ArrayList<String> getEnviorment() {
-        return enviorment;
+    public ArrayList<String> getEnvironment() {
+        return environment;
     }
 }

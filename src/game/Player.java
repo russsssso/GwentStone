@@ -5,7 +5,7 @@ package game;
 import fileio.CardInput;
 import fileio.DecksInput;
 import game.cards.Card;
-import game.cards.Enviorment;
+import game.cards.Environment;
 import game.cards.Hero;
 import game.cards.Minion;
 
@@ -61,8 +61,8 @@ public final class Player {
             for (CardInput j : input.getDecks().get(i)) {
                 if (nameList.getMinions().contains(j.getName())) {
                     decks.get(i).add(new Minion(j));
-                } else if (nameList.getEnviorment().contains(j.getName())) {
-                    decks.get(i).add(new Enviorment(j));
+                } else if (nameList.getEnvironment().contains(j.getName())) {
+                    decks.get(i).add(new Environment(j));
                 }
             }
         }
@@ -87,8 +87,8 @@ public final class Player {
         for (Card card : game) {
             if (nameList.getMinions().contains(card.getName())) {
                 this.gameDeck.add(new Minion(card));
-            } else if (nameList.getEnviorment().contains(card.getName())) {
-                this.gameDeck.add(new Enviorment(card));
+            } else if (nameList.getEnvironment().contains(card.getName())) {
+                this.gameDeck.add(new Environment(card));
             }
         }
     }

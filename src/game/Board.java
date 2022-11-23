@@ -2,7 +2,6 @@ package game;
 
 import game.cards.Card;
 
-import fileio.Input;
 import game.cards.Minion;
 
 import java.util.ArrayList;
@@ -11,16 +10,12 @@ public final class Board {
     private final int row = 4;
     private final int col = 5;
     private ArrayList<ArrayList<Card>> board;
-    private Player player1;
-    private Player player2;
 
-    public Board(final Input inputData) {
-        board = new ArrayList<ArrayList<Card>>(row);
+    public Board() {
+        board = new ArrayList<>(row);
         for (int i = 0; i < col; i++) {
-            board.add(new ArrayList<Card>(col));
+            board.add(new ArrayList<>(col));
         }
-        player1 = new Player(inputData.getPlayerOneDecks());
-        player2 = new Player(inputData.getPlayerTwoDecks());
 
     }
 
@@ -65,16 +60,5 @@ public final class Board {
             return null;
         }
         return board.get(rowNr).get(colNr);
-    }
-
-
-
-
-    public Player getPlayer1() {
-        return player1;
-    }
-
-    public Player getPlayer2() {
-        return player2;
     }
 }

@@ -23,11 +23,11 @@ public final class Game {
     private Integer currentPlayer;
 
     public Game(final Input inputData) {
-        this.board = new Board(inputData);
+        this.board = new Board();
         this.games = inputData.getGames();
         this.players = new ArrayList<>();
-        this.players.add(this.board.getPlayer1());
-        this.players.add(this.board.getPlayer2());
+        this.players.add(new Player(inputData.getPlayerOneDecks()));
+        this.players.add(new Player(inputData.getPlayerTwoDecks()));
         this.noGames = 0;
         this.playerOneWins = 0;
         this.playerTwoWins = 0;

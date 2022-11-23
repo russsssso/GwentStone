@@ -28,7 +28,7 @@ public final class Action {
             case "getPlayerHero":
             case "getCardsInHand":
             case "getPlayerMana":
-            case "getEnviormentCardsInHand":
+            case "getEnvironmentCardsInHand":
                 this.playerIdx = action.getPlayerIdx() - 1;
                 break;
             case "getCardAtPosition":
@@ -96,19 +96,19 @@ public final class Action {
                 playerMana.put("output", game.getPlayers().get(this.playerIdx).getMana());
                 output.add(playerMana);
             }
-            case "getEnviormentCardsInHand" -> {
-                ObjectNode playerEnviorments = objectMapper.createObjectNode();
-                ArrayList<Card> enviorments = new ArrayList<>();
+            case "getEnvironmentCardsInHand" -> {
+                ObjectNode playerEnvironment = objectMapper.createObjectNode();
+                ArrayList<Card> environments = new ArrayList<>();
                 Utils utils = Utils.getInstance();
                 for (Card card : game.getPlayers().get(this.playerIdx).getGameHand()) {
-                    if (utils.getEnviorment().contains(card.getName())) {
-                        enviorments.add(card);
+                    if (utils.getEnvironment().contains(card.getName())) {
+                        environments.add(card);
                     }
                 }
-                playerEnviorments.put("command", this.command);
-                playerEnviorments.put("playerIdx", this.playerIdx + 1);
-                playerEnviorments.putPOJO("output", enviorments);
-                output.add(playerEnviorments);
+                playerEnvironment.put("command", this.command);
+                playerEnvironment.put("playerIdx", this.playerIdx + 1);
+                playerEnvironment.putPOJO("output", environments);
+                output.add(playerEnvironment);
             }
             case "getFrozenCardsOnTable" -> {
                 ObjectNode frozen = objectMapper.createObjectNode();
