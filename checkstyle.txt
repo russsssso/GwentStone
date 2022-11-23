@@ -1,2 +1,5 @@
 Starting audit...
+[ERROR] C:\Users\rusua\Documents\POO Tema\.\src\game\Action.java:51: Line is longer than 100 characters (found 123). [LineLength]
+[ERROR] C:\Users\rusua\Documents\POO Tema\.\src\game\Game.java:52:30: Parameter player should be final. [FinalParameters]
 Audit done.
+Checkstyle ends with 2 errors.
