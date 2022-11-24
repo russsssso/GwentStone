@@ -12,9 +12,9 @@ public final class Board {
     private ArrayList<ArrayList<Card>> board;
 
     public Board() {
-        board = new ArrayList<>(row);
-        for (int i = 0; i < col; i++) {
-            board.add(new ArrayList<>(col));
+        board = new ArrayList<ArrayList<Card>>(row);
+        for (int i = 0; i < row; i++) {
+            board.add(new ArrayList<Card>(col));
         }
 
     }
@@ -51,11 +51,11 @@ public final class Board {
             System.out.println("Board Empty");
             return null;
         }
-        if (board.get(rowNr).isEmpty()) {
+        if (board.size() <= rowNr) {
             System.out.println("Row Empty");
             return null;
         }
-        if (board.get(rowNr).get(colNr) == null) {
+        if (board.get(rowNr).size() <= colNr) {
             System.out.println("No card here!: " + rowNr + " " + colNr);
             return null;
         }

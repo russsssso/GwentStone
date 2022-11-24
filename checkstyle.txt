@@ -1,5 +1,6 @@
 Starting audit...
-[ERROR] C:\Users\rusua\Documents\POO Tema\.\src\game\Action.java:51: Line is longer than 100 characters (found 123). [LineLength]
-[ERROR] C:\Users\rusua\Documents\POO Tema\.\src\game\Game.java:52:30: Parameter player should be final. [FinalParameters]
+[ERROR] C:\Users\rusua\Documents\POO Tema\.\src\game\Action.java:113: Line is longer than 100 characters (found 102). [LineLength]
+[ERROR] C:\Users\rusua\Documents\POO Tema\.\src\game\Game.java:85:41: '3' is a magic number. [MagicNumber]
+[ERROR] C:\Users\rusua\Documents\POO Tema\.\src\game\Game.java:107:37: '3' is a magic number. [MagicNumber]
 Audit done.
-Checkstyle ends with 2 errors.
+Checkstyle ends with 3 errors.

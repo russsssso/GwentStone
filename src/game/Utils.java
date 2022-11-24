@@ -8,16 +8,22 @@ public final class Utils {
     private final ArrayList<String> minionsWithAbility;
     private final ArrayList<String> heroes;
     private final ArrayList<String> environment;
+    private final ArrayList<String> frontRowCards;
+    private final ArrayList<String> backRowCards;
 
     private final int heroHp = 30;
     private final int maxMana = 10;
 
+    private final int rowSize = 5;
+
 
     public Utils() {
-        environment = new ArrayList<>();
-        minionsWithAbility = new ArrayList<>();
-        heroes = new ArrayList<>();
-        minions = new ArrayList<>();
+        environment = new ArrayList<String>();
+        minionsWithAbility = new ArrayList<String>();
+        heroes = new ArrayList<String>();
+        minions = new ArrayList<String>();
+        backRowCards = new ArrayList<String>();
+        frontRowCards = new ArrayList<String>();
 
         minions.add("Sentinel");
         minions.add("Berserker");
@@ -41,6 +47,16 @@ public final class Utils {
         heroes.add("Empress Thorina");
         heroes.add("King Mudface");
         heroes.add("General Kocioraw");
+
+        backRowCards.add("Sentinel");
+        backRowCards.add("Berserker");
+        backRowCards.add("Disciple");
+        backRowCards.add("The Cursed One");
+
+        frontRowCards.add("Goliath");
+        frontRowCards.add("Warden");
+        frontRowCards.add("Miraj");
+        frontRowCards.add("The Ripper");
     }
 
     /**
@@ -58,6 +74,14 @@ public final class Utils {
         return minions;
     }
 
+    public ArrayList<String> getFrontRowCards() {
+        return frontRowCards;
+    }
+
+    public ArrayList<String> getBackRowCards() {
+        return backRowCards;
+    }
+
     public ArrayList<String> getMinionsWithAbility() {
         return minionsWithAbility;
     }
@@ -72,6 +96,10 @@ public final class Utils {
 
     public int getMaxMana() {
         return maxMana;
+    }
+
+    public int getRowSize() {
+        return rowSize;
     }
 
     public ArrayList<String> getEnvironment() {

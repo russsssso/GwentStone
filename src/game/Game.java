@@ -6,6 +6,7 @@ import fileio.ActionsInput;
 import fileio.GameInput;
 import fileio.Input;
 import fileio.StartGameInput;
+import game.cards.Card;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,6 +22,10 @@ public final class Game {
     private ArrayList<Player> players;
 
     private Integer currentPlayer;
+
+    private Integer roundNr;
+
+    private Boolean turnComplete;
 
     public Game(final Input inputData) {
         this.board = new Board();
@@ -47,13 +52,12 @@ public final class Game {
 
     /**
      * Switches the player turn
-     * @param player The player that just finished the turn
      */
-    public void switchPlayer(int player) {
-        if (player == 0) {
-            player = 1;
-        } else if (player == 1) {
-            player = 0;
+    public void switchPlayer() {
+        if (this.currentPlayer == 0) {
+            this.currentPlayer = 1;
+        } else if (this.currentPlayer == 1) {
+            this.currentPlayer = 0;
         }
     }
 
@@ -74,6 +78,60 @@ public final class Game {
     }
 
     /**
+     * Method that returns the current player's BACK row;
+     * */
+    public ArrayList<Card> getPlayerBackRow() {
+        if (currentPlayer == 0) {
+            return board.getBoard().get(3);
+        }
+        return board.getBoard().get(0);
+    }
+
+    /**
+     * Method that returns the current player's FRONT row;
+     * */
+    public ArrayList<Card> getPlayerFrontRow() {
+        if (currentPlayer == 0) {
+            return board.getBoard().get(2);
+        }
+        return board.getBoard().get(1);
+    }
+
+    /**
+     * Method that returns the current player's OPPONENT BACK row;
+     * */
+    public ArrayList<Card> getOpponentBackRow() {
+        if (currentPlayer == 0) {
+            return board.getBoard().get(0);
+        }
+        return board.getBoard().get(3);
+    }
+
+    /**
+     * Method that returns the current player's OPPONENT FRONT row;
+     * */
+    public ArrayList<Card> getOpponentFrontRow() {
+        if (currentPlayer == 0) {
+            return board.getBoard().get(1);
+        }
+        return board.getBoard().get(2);
+    }
+
+    /**
+     * Begin new turn
+     */
+    public void beginTurn() {
+        this.turnComplete = false;
+    }
+
+    /**
+     * End current turn
+     */
+    public void endTurn() {
+        this.turnComplete = true;
+    }
+
+    /**
      * Method where most of the game logic is implemented: it does the initial setup and
      * executes the command for the games
      * @param output the ArrayNode where the game output is written
@@ -85,6 +143,7 @@ public final class Game {
             StartGameInput gameStart = game.getStartGame();
             players.get(0).setGameDeck(gameStart.getPlayerOneDeckIdx());
             players.get(1).setGameDeck(gameStart.getPlayerTwoDeckIdx());
+            this.roundNr = 0;
             int seed = gameStart.getShuffleSeed();
 
             Collections.shuffle(players.get(0).getGameDeck(), new Random(seed));
@@ -104,26 +163,28 @@ public final class Game {
             }
 
             while (!actions.isEmpty()) {
-                Boolean turnComplete = false;
+                roundNr += 1;
                 players.get(0).drawCard();
-                players.get(0).incMana();
+                players.get(0).incMana(roundNr);
                 players.get(1).drawCard();
-                players.get(1).incMana();
+                players.get(1).incMana(roundNr);
 
+                this.beginTurn();
                 while (!turnComplete && !actions.isEmpty()) {
                     Action currentAction = actions.get(0);
-                    currentAction.execute(output, this, objectMapper, turnComplete);
+                    currentAction.execute(output, this, objectMapper);
                     actions.remove(0);
+
                 }
 
-                turnComplete = false;
-                switchPlayer(currentPlayer);
+                switchPlayer();
+                this.beginTurn();
                 while (!turnComplete && !actions.isEmpty()) {
                     Action currentAction = actions.get(0);
-                    currentAction.execute(output, this, objectMapper, turnComplete);
+                    currentAction.execute(output, this, objectMapper);
                     actions.remove(0);
                 }
-                switchPlayer(currentPlayer);
+                switchPlayer();
             }
         }
     }

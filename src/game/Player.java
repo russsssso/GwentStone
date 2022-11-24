@@ -102,7 +102,12 @@ public final class Player {
      */
     public void drawCard() {
         if (!this.gameDeck.isEmpty()) {
-            this.gameHand.add(this.gameDeck.get(0));
+            Card card = this.gameDeck.get(0);
+            if (Utils.getInstance().getMinions().contains(card.getName())) {
+                this.gameHand.add(new Minion(card));
+            } else {
+                this.gameHand.add(new Environment(card));
+            }
             this.gameDeck.remove(0);
         }
     }
@@ -124,14 +129,21 @@ public final class Player {
     }
 
     /**
+     *Method that is called when a minion is placed or environment card is used
+     */
+    public void useMana(final int used) {
+        this.mana -= used;
+    }
+
+    /**
      * Used for incrementing player's mana at the beginning of each round
      */
-    public void incMana() {
+    public void incMana(final int round) {
         Utils util = Utils.getInstance();
-        if (this.mana >= util.getMaxMana()) {
-            this.mana = util.getMaxMana();
+        if (round >= util.getMaxMana()) {
+            this.mana += util.getMaxMana();
         } else {
-            this.mana += 1;
+            this.mana += round;
         }
     }
 
