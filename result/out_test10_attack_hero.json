@@ -30,7 +30,9 @@
     "description" : "Premium card: Insanity is always an option, now it is an absolute.",
     "colors" : [ "Yellow", "Orange", "Red" ],
     "name" : "Miraj"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "getCardAtPosition",
   "output" : {
@@ -40,13 +42,15 @@
     "description" : "Standard card: Trained by the best, nothing will catch him off-guard.",
     "colors" : [ "Black", "Grey", "Blue" ],
     "name" : "Sentinel"
-  }
+  },
+  "x" : 3,
+  "y" : 0
 }, {
   "command" : "getPlayerHero",
   "playerIdx" : 1,
   "output" : {
     "mana" : 3,
-    "health" : 30,
+    "health" : 25,
     "description" : "Standard card: Absolute order, a soldier must devote his life to his General.",
     "colors" : [ "Red", "Black", "Purple" ],
     "name" : "General Kocioraw"
@@ -56,7 +60,7 @@
   "playerIdx" : 2,
   "output" : {
     "mana" : 3,
-    "health" : 30,
+    "health" : 24,
     "description" : "Premium card: Glory to all we see, glory to all he is, glory to everyone who will try to escape him.",
     "colors" : [ "Black", "Red", "Grey" ],
     "name" : "Lord Royce"
@@ -93,7 +97,9 @@
     "description" : "Standard card: Thrown from the highest cliff, revenge will be his glory.",
     "colors" : [ "Black", "White", "Red" ],
     "name" : "The Cursed One"
-  }
+  },
+  "x" : 3,
+  "y" : 1
 }, {
   "command" : "getCardAtPosition",
   "output" : {
@@ -103,13 +109,15 @@
     "description" : "Premium card: Insanity is always an option, now it is an absolute.",
     "colors" : [ "Yellow", "Orange", "Red" ],
     "name" : "Miraj"
-  }
+  },
+  "x" : 2,
+  "y" : 0
 }, {
   "command" : "getPlayerHero",
   "playerIdx" : 1,
   "output" : {
     "mana" : 3,
-    "health" : 30,
+    "health" : 20,
     "description" : "Standard card: Absolute order, a soldier must devote his life to his General.",
     "colors" : [ "Red", "Black", "Purple" ],
     "name" : "General Kocioraw"
@@ -119,11 +127,13 @@
   "playerIdx" : 2,
   "output" : {
     "mana" : 3,
-    "health" : 30,
+    "health" : 12,
     "description" : "Premium card: Glory to all we see, glory to all he is, glory to everyone who will try to escape him.",
     "colors" : [ "Black", "Red", "Grey" ],
     "name" : "Lord Royce"
   }
+}, {
+  "gameEnded" : "Player one killed the enemy hero."
 }, {
   "command" : "getPlayerMana",
   "playerIdx" : 1,

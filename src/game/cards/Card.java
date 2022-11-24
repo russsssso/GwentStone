@@ -5,12 +5,13 @@ import fileio.CardInput;
 
 import java.util.ArrayList;
 
-@JsonIgnoreProperties(value = { "frozen" })
+@JsonIgnoreProperties(value = { "frozen", "used" })
 public abstract class Card {
     private int mana;
     protected int attackDamage;
     protected int health;
     protected Boolean frozen;
+    protected Boolean used;
     private String description;
     private ArrayList<String> colors;
     private String name;

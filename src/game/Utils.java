@@ -5,6 +5,8 @@ public final class Utils {
 
     private static Utils instance = null;
     private final ArrayList<String> minions;
+
+    private final ArrayList<String> tanks;
     private final ArrayList<String> minionsWithAbility;
     private final ArrayList<String> heroes;
     private final ArrayList<String> environment;
@@ -24,6 +26,7 @@ public final class Utils {
         minions = new ArrayList<String>();
         backRowCards = new ArrayList<String>();
         frontRowCards = new ArrayList<String>();
+        tanks = new ArrayList<String>();
 
         minions.add("Sentinel");
         minions.add("Berserker");
@@ -33,6 +36,9 @@ public final class Utils {
         minions.add("The Ripper");
         minions.add("Disciple");
         minions.add("The Cursed One");
+
+        tanks.add("Goliath");
+        tanks.add("Warden");
 
         minionsWithAbility.add("Miraj");
         minionsWithAbility.add("The Ripper");
@@ -72,6 +78,10 @@ public final class Utils {
 
     public ArrayList<String> getMinions() {
         return minions;
+    }
+
+    public ArrayList<String> getTanks() {
+        return tanks;
     }
 
     public ArrayList<String> getFrontRowCards() {
